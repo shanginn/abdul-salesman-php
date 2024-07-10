@@ -1,0 +1,54 @@
+{
+  "name": "shanginn/abdul-salesman-php",
+  "authors": [
+    {
+      "name": "Nikolai Shangin",
+      "email": "shanginn@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=8.3",
+    "shanginn/telegram-bot-api-framework": "@dev",
+    "crell/serde": "^1.2",
+    "psr/http-message": "^1.0",
+    "psr/http-client-implementation": "^1.0",
+    "php-http/httplug": "^2.0",
+    "php-http/message-factory": "^1.0",
+    "php-http/discovery": "^1.0",
+    "symfony/http-client": "7.2.x-dev",
+    "http-interop/http-factory-guzzle": "dev-master",
+    "php-http/react-adapter": "4.x-dev",
+    "vlucas/phpdotenv": "^5.6@dev",
+    "symfony/var-dumper": "7.2.x-dev",
+    "symfony/serializer": "6.4.x-dev",
+    "symfony/property-access": "7.2.x-dev",
+    "spiral/json-schema-generator": "1.x-dev"
+  },
+  "require-dev": {
+    "php-http/mock-client": "^1.0",
+    "php-http/message": "^1.0",
+    "guzzlehttp/psr7": "^1.0",
+    "http-interop/http-factory-guzzle": "dev-master",
+    "psy/psysh": "@stable"
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "/Users/shanginn/Projects/telegram-bot-api/framework",
+      "options": {
+        "symlink": true
+      }
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Shanginn\\AbdulSalesman\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}
