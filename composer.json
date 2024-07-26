@@ -9,7 +9,7 @@
   "minimum-stability": "dev",
   "require": {
     "php": ">=8.3",
-    "shanginn/telegram-bot-api-framework": "@dev",
+    "shanginn/telegram-bot-api-framework": "*",
     "crell/serde": "^1.2",
     "psr/http-message": "^1.0",
     "psr/http-client-implementation": "^1.0",
@@ -36,15 +36,6 @@
     "http-interop/http-factory-guzzle": "dev-master",
     "psy/psysh": "@stable"
   },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "/Users/shanginn/Projects/telegram-bot-api/framework",
-      "options": {
-        "symlink": true
-      }
-    }
-  ],
   "autoload": {
     "psr-4": {
       "Shanginn\\AbdulSalesman\\": "src/"
