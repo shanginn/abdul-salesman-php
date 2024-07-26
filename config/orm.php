@@ -42,6 +42,17 @@ $migrator = new Migrations\Migrator($config, $dbal, new Migrations\FileRepositor
 // Init migration table
 $migrator->configure();
 
+while(($migrated = $migrator->run()) !== null) {
+    $status = match($migrated->getState()->getStatus()) {
+        Migrations\State::STATUS_UNDEFINED => 'undefined',
+        Migrations\State::STATUS_PENDING => 'pending',
+        Migrations\State::STATUS_EXECUTED => 'executed',
+        default => 'unknown',
+    };
+
+    echo "{$migrated->getState()->getName()} migrated to {$status}\n";
+}
+
 $finder = (new Finder())->files()->in([__DIR__ . '/../src/Entity']);
 $classLocator = new ClassLocator($finder);
 
@@ -68,16 +79,5 @@ $schema = (new Schema\Compiler())->compile(new Schema\Registry($dbal), [
 ]);
 
 $orm = new ORM\ORM(new ORM\Factory($dbal), new ORM\Schema($schema));
-
-while(($migrated = $migrator->run()) !== null) {
-    $status = match($migrated->getState()->getStatus()) {
-        Migrations\State::STATUS_UNDEFINED => 'undefined',
-        Migrations\State::STATUS_PENDING => 'pending',
-        Migrations\State::STATUS_EXECUTED => 'executed',
-        default => 'unknown',
-    };
-
-    echo "{$migrated->getState()->getName()} migrated to {$status}\n";
-}
 
 return $orm;
