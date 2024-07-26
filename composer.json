@@ -23,7 +23,11 @@
     "symfony/var-dumper": "7.2.x-dev",
     "symfony/serializer": "6.4.x-dev",
     "symfony/property-access": "7.2.x-dev",
-    "spiral/json-schema-generator": "1.x-dev"
+    "spiral/json-schema-generator": "1.x-dev",
+    "cycle/orm": "2.x-dev",
+    "cycle/annotated": "4.x-dev",
+    "cycle/migrations": "4.x-dev",
+    "cycle/schema-migrations-generator": "3.x-dev"
   },
   "require-dev": {
     "php-http/mock-client": "^1.0",

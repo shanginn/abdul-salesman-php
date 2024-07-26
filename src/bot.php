@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use function React\Async\await;
 
@@ -40,7 +40,7 @@ $ant = new Anthropic(
     'abdul' => $abdul,
     'systemPrompt' => $systemPrompt,
     'finalSystemPromptTemplate' => $finalSystemPromptTemplate,
-] = require __DIR__ . '/config.php';
+] = require __DIR__ . '/../config/config.php';
 
 $states = [];
 

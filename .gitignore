@@ -1,4 +1,5 @@
 vendor
 .env
 .php-cs-fixer.cache
-src/config.php
+config/config.php
+database.sqlite

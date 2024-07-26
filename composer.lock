@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1727fdd55427af20732d8c0c0d198c76",
+    "content-hash": "d7b481879b0fb4b48ce0dfa07c4f3ef9",
     "packages": [
         {
             "name": "composer/semver",
@@ -298,6 +298,387 @@
             "time": "2024-06-05T01:26:35+00:00"
         },
         {
+            "name": "cycle/annotated",
+            "version": "4.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cycle/annotated.git",
+                "reference": "7dad356336ee70ef1f6e7b750274d4d215a691f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cycle/annotated/zipball/7dad356336ee70ef1f6e7b750274d4d215a691f1",
+                "reference": "7dad356336ee70ef1f6e7b750274d4d215a691f1",
+                "shasum": ""
+            },
+            "require": {
+                "cycle/orm": "^2.7",
+                "cycle/schema-builder": "^2.8",
+                "doctrine/inflector": "^2.0",
+                "php": ">=8.1",
+                "spiral/attributes": "^2.8|^3.0",
+                "spiral/tokenizer": "^2.8|^3.0"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.14.3 || ^2.0.1",
+                "phpunit/phpunit": "^10.1",
+                "vimeo/psalm": "^5.11"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cycle\\Annotated\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
+            "description": "Cycle ORM Annotated Entities generator",
+            "homepage": "https://cycle-orm.dev",
+            "support": {
+                "chat": "https://discord.gg/spiralphp",
+                "docs": "https://cycle-orm.dev/docs",
+                "issues": "https://github.com/cycle/annotated/issues",
+                "source": "https://github.com/cycle/annotated"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/cycle",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-02-08T21:45:04+00:00"
+        },
+        {
+            "name": "cycle/database",
+            "version": "2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cycle/database.git",
+                "reference": "5f3fe4fc198d607fc40110e2fdb36b3c1c4e10f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cycle/database/zipball/5f3fe4fc198d607fc40110e2fdb36b3c1c4e10f7",
+                "reference": "5f3fe4fc198d607fc40110e2fdb36b3c1c4e10f7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": ">=8.0",
+                "psr/log": "1 - 3",
+                "spiral/core": "^2.8 || ^3.0",
+                "spiral/pagination": "^2.8 || ^3.0",
+                "symfony/polyfill-php83": "^1.28"
+            },
+            "conflict": {
+                "spiral/database": "*"
+            },
+            "require-dev": {
+                "ergebnis/composer-normalize": "^2.42",
+                "infection/infection": "^0.26.10",
+                "mockery/mockery": "^1.5",
+                "phpunit/phpunit": "^9.5",
+                "spiral/tokenizer": "^2.14 || ^3.0",
+                "vimeo/psalm": "^5.18"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/polyfill.php",
+                    "src/functions_polyfill.php"
+                ],
+                "psr-4": {
+                    "Cycle\\Database\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                }
+            ],
+            "description": "DBAL, schema introspection, migration and pagination",
+            "homepage": "https://cycle-orm.dev",
+            "keywords": [
+                "database",
+                "dbal",
+                "mssql",
+                "mysql",
+                "orm",
+                "postgresql",
+                "query-builder",
+                "sql",
+                "sqlite"
+            ],
+            "support": {
+                "chat": "https://discord.gg/spiralphp",
+                "docs": "https://cycle-orm.dev/docs",
+                "issues": "https://github.com/cycle/database/issues",
+                "source": "https://github.com/cycle/database"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/cycle",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-06-11T11:30:02+00:00"
+        },
+        {
+            "name": "cycle/migrations",
+            "version": "4.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cycle/migrations.git",
+                "reference": "434b08be175bf87f920651b9f6d91fc1cb7ed3ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cycle/migrations/zipball/434b08be175bf87f920651b9f6d91fc1cb7ed3ba",
+                "reference": "434b08be175bf87f920651b9f6d91fc1cb7ed3ba",
+                "shasum": ""
+            },
+            "require": {
+                "cycle/database": "^2.7.0",
+                "php": ">=8.1",
+                "spiral/core": "^3.0",
+                "spiral/files": "^3.0",
+                "spiral/reactor": "^3.0",
+                "spiral/tokenizer": "^3.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "phpunit/phpunit": "^9.5",
+                "vimeo/psalm": "dev-master"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cycle\\Migrations\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Database migrations, migration scaffolding",
+            "support": {
+                "issues": "https://github.com/cycle/migrations/issues",
+                "source": "https://github.com/cycle/migrations/tree/v4.2.3"
+            },
+            "time": "2024-01-25T10:49:43+00:00"
+        },
+        {
+            "name": "cycle/orm",
+            "version": "2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cycle/orm.git",
+                "reference": "23023be5e8452c1e5b05417f9c4539db71d60927"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cycle/orm/zipball/23023be5e8452c1e5b05417f9c4539db71d60927",
+                "reference": "23023be5e8452c1e5b05417f9c4539db71d60927",
+                "shasum": ""
+            },
+            "require": {
+                "cycle/database": "^2.8.1",
+                "doctrine/instantiator": "^1.3.1 || ^2.0",
+                "ext-pdo": "*",
+                "php": ">=8.0",
+                "spiral/core": "^2.8 || ^3.0"
+            },
+            "require-dev": {
+                "doctrine/collections": "^1.6 || ^2.0",
+                "illuminate/collections": "^8.0",
+                "loophp/collection": "^6.0 || ^7.0",
+                "mockery/mockery": "^1.1",
+                "phpunit/phpunit": "^9.5",
+                "ramsey/uuid": "^4.0",
+                "spiral/tokenizer": "^2.8 || ^3.0",
+                "symfony/var-dumper": "^5.2 || ^6.0 || ^7.0",
+                "vimeo/psalm": "5.21"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cycle\\ORM\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
+            "description": "PHP DataMapper ORM and Data Modelling Engine",
+            "homepage": "https://cycle-orm.dev",
+            "support": {
+                "chat": "https://discord.gg/spiralphp",
+                "docs": "https://cycle-orm.dev/docs",
+                "issues": "https://github.com/cycle/orm/issues",
+                "source": "https://github.com/cycle/orm"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/cycle",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-06-05T13:14:36+00:00"
+        },
+        {
+            "name": "cycle/schema-builder",
+            "version": "2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cycle/schema-builder.git",
+                "reference": "413af8fc8f93c6e48cebc76ab6c37c65fe2cab63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cycle/schema-builder/zipball/413af8fc8f93c6e48cebc76ab6c37c65fe2cab63",
+                "reference": "413af8fc8f93c6e48cebc76ab6c37c65fe2cab63",
+                "shasum": ""
+            },
+            "require": {
+                "cycle/database": "^2.7.1",
+                "cycle/orm": "^2.7",
+                "php": ">=8.0",
+                "yiisoft/friendly-exception": "^1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "spiral/tokenizer": "^2.8",
+                "symfony/console": "^6.0 || ^7.0",
+                "vimeo/psalm": "^5.12"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cycle\\Schema\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Cycle ORM Schema Builder",
+            "support": {
+                "issues": "https://github.com/cycle/schema-builder/issues",
+                "source": "https://github.com/cycle/schema-builder/tree/v2.9.0"
+            },
+            "time": "2024-07-10T16:20:17+00:00"
+        },
+        {
+            "name": "cycle/schema-migrations-generator",
+            "version": "3.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cycle/schema-migrations-generator.git",
+                "reference": "93190e85d98c2e7cf20de9d6d51c4878dc8084de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cycle/schema-migrations-generator/zipball/93190e85d98c2e7cf20de9d6d51c4878dc8084de",
+                "reference": "93190e85d98c2e7cf20de9d6d51c4878dc8084de",
+                "shasum": ""
+            },
+            "require": {
+                "cycle/database": "^2.0",
+                "cycle/migrations": "^4.0",
+                "cycle/schema-builder": "^2.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "cycle/annotated": "^3.0",
+                "cycle/orm": "^2.0",
+                "phpunit/phpunit": "^9.5",
+                "spiral/debug": "^3.0",
+                "spiral/framework": "^3.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cycle\\Schema\\Generator\\Migrations\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Cycle ORM Migration generation",
+            "support": {
+                "issues": "https://github.com/cycle/schema-migrations-generator/issues",
+                "source": "https://github.com/cycle/schema-migrations-generator/tree/2.1.0"
+            },
+            "time": "2023-01-12T10:29:49+00:00"
+        },
+        {
             "name": "doctrine/deprecations",
             "version": "1.1.x-dev",
             "source": {
@@ -344,6 +725,168 @@
                 "source": "https://github.com/doctrine/deprecations/tree/1.1.3"
             },
             "time": "2024-01-30T19:34:25+00:00"
+        },
+        {
+            "name": "doctrine/inflector",
+            "version": "2.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "f587d8c05c6e00f99cbfb32d565e4f6743c07ee4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/f587d8c05c6e00f99cbfb32d565e4f6743c07ee4",
+                "reference": "f587d8c05c6e00f99cbfb32d565e4f6743c07ee4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^11.0",
+                "phpstan/phpstan": "^1.8",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpstan/phpstan-strict-rules": "^1.3",
+                "phpunit/phpunit": "^8.5 || ^9.5",
+                "vimeo/psalm": "^4.25 || ^5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Inflector\\": "lib/Doctrine/Inflector"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "PHP Doctrine Inflector is a small library that can perform string manipulations with regard to upper/lowercase and singular/plural forms of words.",
+            "homepage": "https://www.doctrine-project.org/projects/inflector.html",
+            "keywords": [
+                "inflection",
+                "inflector",
+                "lowercase",
+                "manipulation",
+                "php",
+                "plural",
+                "singular",
+                "strings",
+                "uppercase",
+                "words"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/inflector/issues",
+                "source": "https://github.com/doctrine/inflector/tree/2.1.x"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finflector",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-02-18T21:47:00+00:00"
+        },
+        {
+            "name": "doctrine/instantiator",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/instantiator.git",
+                "reference": "0dfb69d79d0964b8a80bfa92c07f50e3e8d73542"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/0dfb69d79d0964b8a80bfa92c07f50e3e8d73542",
+                "reference": "0dfb69d79d0964b8a80bfa92c07f50e3e8d73542",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^12",
+                "ext-pdo": "*",
+                "ext-phar": "*",
+                "phpbench/phpbench": "^1.2",
+                "phpstan/phpstan": "^1.9.4",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "phpunit/phpunit": "^10.5",
+                "vimeo/psalm": "^5.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "https://ocramius.github.io/"
+                }
+            ],
+            "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
+            "homepage": "https://www.doctrine-project.org/projects/instantiator.html",
+            "keywords": [
+                "constructor",
+                "instantiate"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/instantiator/issues",
+                "source": "https://github.com/doctrine/instantiator/tree/2.0.x"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Finstantiator",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-06-20T19:34:15+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -675,6 +1218,163 @@
                 "source": "https://github.com/http-interop/http-factory-guzzle/tree/1.2.0"
             },
             "time": "2021-07-21T13:50:14+00:00"
+        },
+        {
+            "name": "nette/php-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/php-generator.git",
+                "reference": "076795a95cfe05ccae798caedc9d5278f66ca709"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/076795a95cfe05ccae798caedc9d5278f66ca709",
+                "reference": "076795a95cfe05ccae798caedc9d5278f66ca709",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^3.2.9 || ^4.0",
+                "php": "8.0 - 8.4"
+            },
+            "require-dev": {
+                "jetbrains/phpstorm-attributes": "dev-master",
+                "nette/tester": "^2.4",
+                "nikic/php-parser": "^4.18 || ^5.0",
+                "phpstan/phpstan": "^1.0",
+                "tracy/tracy": "^2.8"
+            },
+            "suggest": {
+                "nikic/php-parser": "to use ClassType::from(withBodies: true) & ClassType::fromCode()"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.1-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0-only",
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.3 features.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "code",
+                "nette",
+                "php",
+                "scaffolding"
+            ],
+            "support": {
+                "issues": "https://github.com/nette/php-generator/issues",
+                "source": "https://github.com/nette/php-generator/tree/master"
+            },
+            "time": "2024-06-18T20:57:59+00:00"
+        },
+        {
+            "name": "nette/utils",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/utils.git",
+                "reference": "5de10a1f2ae013a2265316cd1702319064b7334d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/utils/zipball/5de10a1f2ae013a2265316cd1702319064b7334d",
+                "reference": "5de10a1f2ae013a2265316cd1702319064b7334d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "8.0 - 8.4"
+            },
+            "conflict": {
+                "nette/finder": "<3",
+                "nette/schema": "<1.2.2"
+            },
+            "require-dev": {
+                "jetbrains/phpstorm-attributes": "dev-master",
+                "nette/tester": "^2.5",
+                "phpstan/phpstan": "^1.0",
+                "tracy/tracy": "^2.9"
+            },
+            "suggest": {
+                "ext-gd": "to use Image",
+                "ext-iconv": "to use Strings::webalize(), toAscii(), chr() and reverse()",
+                "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
+                "ext-json": "to use Nette\\Utils\\Json",
+                "ext-mbstring": "to use Strings::lower() etc...",
+                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0-only",
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🛠  Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "array",
+                "core",
+                "datetime",
+                "images",
+                "json",
+                "nette",
+                "paginator",
+                "password",
+                "slugify",
+                "string",
+                "unicode",
+                "utf-8",
+                "utility",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/nette/utils/issues",
+                "source": "https://github.com/nette/utils/tree/master"
+            },
+            "time": "2024-06-18T21:21:52+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -1440,6 +2140,59 @@
             "time": "2024-03-04T21:32:27+00:00"
         },
         {
+            "name": "psr/cache",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "0a7c67d0d1c8167b342eb74339d6f961663826ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/0a7c67d0d1c8167b342eb74339d6f961663826ce",
+                "reference": "0a7c67d0d1c8167b342eb74339d6f961663826ce",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "suggest": {
+                "fig/cache-util": "Provides some useful PSR-6 utilities"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/master"
+            },
+            "time": "2021-02-24T03:25:37+00:00"
+        },
+        {
             "name": "psr/container",
             "version": "dev-master",
             "source": {
@@ -1704,6 +2457,58 @@
                 "source": "https://github.com/php-fig/log/tree/3.0.0"
             },
             "time": "2021-07-14T16:46:02+00:00"
+        },
+        {
+            "name": "psr/simple-cache",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "2d280c2aaa23a120f35d55cfde8581954a8e77fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/2d280c2aaa23a120f35d55cfde8581954a8e77fa",
+                "reference": "2d280c2aaa23a120f35d55cfde8581954a8e77fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\SimpleCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for simple caching",
+            "keywords": [
+                "cache",
+                "caching",
+                "psr",
+                "psr-16",
+                "simple-cache"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/simple-cache/tree/master"
+            },
+            "time": "2022-04-08T16:41:45+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -2504,11 +3309,11 @@
         },
         {
             "name": "shanginn/telegram-bot-api-framework",
-            "version": "0.18.0",
+            "version": "0.19.0",
             "dist": {
                 "type": "path",
                 "url": "/Users/shanginn/Projects/telegram-bot-api/framework",
-                "reference": "0bf5a0ad4b1ea9aa7e6dbcff4059f8179e9a4e24"
+                "reference": "f0be46f8ce986f7af0b02c1888838ed31b705947"
             },
             "require": {
                 "php": "^8.3",
@@ -2560,6 +3365,220 @@
                 "symlink": true,
                 "relative": false
             }
+        },
+        {
+            "name": "spiral/attributes",
+            "version": "v3.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiral/attributes.git",
+                "reference": "02f9b68a57618624029ee3ed165258f9bb7047b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiral/attributes/zipball/02f9b68a57618624029ee3ed165258f9bb7047b3",
+                "reference": "02f9b68a57618624029ee3ed165258f9bb7047b3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "psr/cache": "1 - 3",
+                "psr/simple-cache": "1 - 3"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.14 || ^2.0",
+                "jetbrains/phpstorm-attributes": "^1.0",
+                "phpunit/phpunit": "^9.5.20",
+                "vimeo/psalm": "^5.17"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/polyfill.php"
+                ],
+                "psr-4": {
+                    "Spiral\\Attributes\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                },
+                {
+                    "name": "Kirill Nesmeyanov (SerafimArts)",
+                    "email": "kirill.nesmeyanov@spiralscout.com"
+                }
+            ],
+            "description": "PHP attributes reader",
+            "homepage": "https://spiral.dev",
+            "keywords": [
+                "annotations",
+                "attributes",
+                "metadata"
+            ],
+            "support": {
+                "chat": "https://discord.gg/V6EK4he",
+                "docs": "https://spiral.dev/docs",
+                "forum": "https://forum.spiral.dev",
+                "issues": "https://github.com/spiral/attributes/issues",
+                "source": "https://github.com/spiral/attributes"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/roadrunner-server",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-06-27T10:30:21+00:00"
+        },
+        {
+            "name": "spiral/core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiral/core.git",
+                "reference": "d513f6f85f7e477cd7c12459bd794ace1a7325fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiral/core/zipball/d513f6f85f7e477cd7c12459bd794ace1a7325fb",
+                "reference": "d513f6f85f7e477cd7c12459bd794ace1a7325fb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "psr/container": "^1.1|^2.0"
+            },
+            "provide": {
+                "psr/container-implementation": "^1.1|^2.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "phpunit/phpunit": "^10.1",
+                "vimeo/psalm": "^5.9"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.14.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spiral\\Core\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
+            "description": "IoC container, IoC scopes, factory, memory, configuration interfaces",
+            "homepage": "https://spiral.dev",
+            "support": {
+                "issues": "https://github.com/spiral/framework/issues",
+                "source": "https://github.com/spiral/core"
+            },
+            "time": "2024-05-30T20:41:04+00:00"
+        },
+        {
+            "name": "spiral/files",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiral/files.git",
+                "reference": "177126de665acc76ad4f6feff69d1320e2ed2084"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiral/files/zipball/177126de665acc76ad4f6feff69d1320e2ed2084",
+                "reference": "177126de665acc76ad4f6feff69d1320e2ed2084",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "phpunit/phpunit": "^10.1",
+                "vimeo/psalm": "^5.9"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.14.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spiral\\Files\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
+            "description": "File Toolkit: atomic file manager",
+            "homepage": "https://spiral.dev",
+            "support": {
+                "issues": "https://github.com/spiral/framework/issues",
+                "source": "https://github.com/spiral/files"
+            },
+            "time": "2024-05-30T20:41:24+00:00"
         },
         {
             "name": "spiral/json-schema-generator",
@@ -2623,6 +3642,275 @@
                 "source": "https://github.com/spiral/json-schema-generator/tree/v1.1.0"
             },
             "time": "2023-12-06T12:12:00+00:00"
+        },
+        {
+            "name": "spiral/logger",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiral/logger.git",
+                "reference": "daacdf54e817eec79c0ed3cfdf4a4befd0edec1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiral/logger/zipball/daacdf54e817eec79c0ed3cfdf4a4befd0edec1a",
+                "reference": "daacdf54e817eec79c0ed3cfdf4a4befd0edec1a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "psr/log": "1 - 3",
+                "spiral/core": "^3.14"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "phpunit/phpunit": "^10.1",
+                "vimeo/psalm": "^5.9"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.14.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spiral\\Logger\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
+            "description": "LogFactory and global log listeners",
+            "homepage": "https://spiral.dev",
+            "support": {
+                "issues": "https://github.com/spiral/framework/issues",
+                "source": "https://github.com/spiral/logger"
+            },
+            "time": "2024-05-30T20:41:31+00:00"
+        },
+        {
+            "name": "spiral/pagination",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiral/pagination.git",
+                "reference": "f880a88335f8dfa8589d9562c635d53f8387face"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiral/pagination/zipball/f880a88335f8dfa8589d9562c635d53f8387face",
+                "reference": "f880a88335f8dfa8589d9562c635d53f8387face",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "phpunit/phpunit": "^10.1",
+                "vimeo/psalm": "^5.9"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.14.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spiral\\Pagination\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
+            "description": "Common pagination interfaces",
+            "homepage": "https://spiral.dev",
+            "support": {
+                "issues": "https://github.com/spiral/framework/issues",
+                "source": "https://github.com/spiral/pagination"
+            },
+            "time": "2024-05-30T20:41:49+00:00"
+        },
+        {
+            "name": "spiral/reactor",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiral/reactor.git",
+                "reference": "b111ff23a22fbd23d7084d8e93569054e2757600"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiral/reactor/zipball/b111ff23a22fbd23d7084d8e93569054e2757600",
+                "reference": "b111ff23a22fbd23d7084d8e93569054e2757600",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/inflector": "^1.4|^2.0",
+                "nette/php-generator": "^4.1.2",
+                "php": ">=8.1",
+                "spiral/files": "^3.14"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "phpunit/phpunit": "^10.1",
+                "psr/container": "^1.1|^2.0",
+                "vimeo/psalm": "^5.9"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.14.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spiral\\Reactor\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
+            "description": "Reactor: Code Scaffolding",
+            "homepage": "https://spiral.dev",
+            "support": {
+                "issues": "https://github.com/spiral/framework/issues",
+                "source": "https://github.com/spiral/reactor"
+            },
+            "time": "2024-05-30T20:41:51+00:00"
+        },
+        {
+            "name": "spiral/tokenizer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spiral/tokenizer.git",
+                "reference": "9f784f58142981bea97829debce2a955667115ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spiral/tokenizer/zipball/9f784f58142981bea97829debce2a955667115ea",
+                "reference": "9f784f58142981bea97829debce2a955667115ea",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=8.1",
+                "spiral/core": "^3.14",
+                "spiral/logger": "^3.14",
+                "symfony/finder": "^5.3.7 || ^6.0 || ^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "phpunit/phpunit": "^10.1",
+                "spiral/attributes": "^2.8|^3.0",
+                "spiral/boot": "^3.14",
+                "spiral/files": "^3.14",
+                "vimeo/psalm": "^5.9"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.14.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spiral\\Tokenizer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Titov (wolfy-j)",
+                    "email": "wolfy-j@spiralscout.com"
+                },
+                {
+                    "name": "Pavel Butchnev (butschster)",
+                    "email": "pavel.buchnev@spiralscout.com"
+                },
+                {
+                    "name": "Aleksei Gagarin (roxblnfk)",
+                    "email": "alexey.gagarin@spiralscout.com"
+                },
+                {
+                    "name": "Maksim Smakouz (msmakouz)",
+                    "email": "maksim.smakouz@spiralscout.com"
+                }
+            ],
+            "description": "Static Analysis: Class and Invocation locators",
+            "homepage": "https://spiral.dev",
+            "support": {
+                "issues": "https://github.com/spiral/framework/issues",
+                "source": "https://github.com/spiral/tokenizer"
+            },
+            "time": "2024-05-30T20:47:41+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -2691,6 +3979,70 @@
                 }
             ],
             "time": "2024-04-18T09:32:20+00:00"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "7.2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "0f7f413c4b46ff3312500439fb250cb63e89cf78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/0f7f413c4b46ff3312500439fb250cb63e89cf78",
+                "reference": "0f7f413c4b46ff3312500439fb250cb63e89cf78",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "symfony/filesystem": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Finder\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Finds files and directories via an intuitive fluent interface",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/finder/tree/7.2"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-07-25T06:25:26+00:00"
         },
         {
             "name": "symfony/http-client",
@@ -4312,6 +5664,66 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "yiisoft/friendly-exception",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/friendly-exception.git",
+                "reference": "4b4a19edff251791e3c92d4d83435d2716351ff4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/friendly-exception/zipball/4b4a19edff251791e3c92d4d83435d2716351ff4",
+                "reference": "4b4a19edff251791e3c92d4d83435d2716351ff4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.4",
+                "roave/infection-static-analysis-plugin": "^1.5",
+                "spatie/phpunit-watcher": "^1.23",
+                "vimeo/psalm": "^4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yiisoft\\FriendlyException\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "An interface for friendlier exception",
+            "homepage": "http://www.yiiframework.com/",
+            "keywords": [
+                "error handling",
+                "exception",
+                "exceptions",
+                "friendly"
+            ],
+            "support": {
+                "forum": "http://www.yiiframework.com/forum/",
+                "irc": "irc://irc.freenode.net/yii",
+                "issues": "https://github.com/yiisoft/friendly-exception/issues?state=open",
+                "source": "https://github.com/yiisoft/friendly-exception",
+                "wiki": "http://www.yiiframework.com/wiki/"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/yiisoft",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/yiisoft",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2021-10-26T21:43:25+00:00"
         }
     ],
     "packages-dev": [
@@ -4895,6 +6307,9 @@
         "symfony/serializer": 20,
         "symfony/property-access": 20,
         "spiral/json-schema-generator": 20,
+        "cycle/orm": 20,
+        "cycle/annotated": 20,
+        "cycle/migrations": 20,
         "psy/psysh": 0
     },
     "prefer-stable": false,
