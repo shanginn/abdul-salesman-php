@@ -8,7 +8,7 @@ use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 
 #[Entity]
-final readonly class Message
+class Message
 {
     #[Column(type: "primary")]
     public int $id;
@@ -21,13 +21,16 @@ final readonly class Message
         public string $chatId,
 
         #[Column(type: "datetime")]
-        public \DateTime $createdAt,
+        public \DateTimeImmutable $createdAt,
 
         #[Column(type: "text")]
         public string $fromUserId,
 
         #[Column(type: "text", nullable: true)]
         public string $fromUsername,
+
+        #[Column(type: "boolean", typecast: "bool")]
+        public bool $isFinishMessage = false
     ) {
     }
 }

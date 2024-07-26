@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use Cycle\ORM\EntityManager;
 use function React\Async\await;
 
 use Shanginn\AbdulSalesman\Anthropic\Anthropic;
@@ -13,9 +14,7 @@ use Shanginn\AbdulSalesman\Anthropic\Message\TextContent;
 use Shanginn\AbdulSalesman\Anthropic\Message\ToolChoice;
 use Shanginn\AbdulSalesman\Character\InteractionSchema;
 use Shanginn\AbdulSalesman\Character\InteractionTool;
-use Shanginn\AbdulSalesman\Character\Mood;
-use Shanginn\AbdulSalesman\Character\Person;
-use Shanginn\AbdulSalesman\Character\Personality;
+use Shanginn\AbdulSalesman\Entity;
 use Shanginn\AbdulSalesman\EchoLogger;
 use Shanginn\AbdulSalesman\OneMessageAtOneTimeMiddleware;
 use Shanginn\TelegramBotApiBindings\Types\Update;
@@ -42,15 +41,43 @@ $ant = new Anthropic(
     'finalSystemPromptTemplate' => $finalSystemPromptTemplate,
 ] = require __DIR__ . '/../config/config.php';
 
+$orm = require __DIR__ . '/../config/orm.php';
+$em = new EntityManager($orm);
+
+/** @var Entity\Message[] $messages */
+$messages = $orm->getRepository(Entity\Message::class)->findAll();
+
 $states = [];
 
+$botInfo = await($bot->api->getMe());
+
+foreach ($messages as $message) {
+    $chatId = $message->chatId;
+
+    if (!isset($states[$chatId])) {
+        $states[$chatId] = [];
+    }
+
+    $states[$chatId][] = new Message(
+        role: $message->fromUserId === (string) $botInfo->id ? Role::ASSISTANT : Role::USER,
+        content: $message->text,
+    );
+
+    if ($message->isFinishMessage) {
+        $states[$chatId] = [];
+    }
+}
+
 $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
+    $botInfo,
     &$states,
     &$gameLoopHandler,
     $ant,
     $abdul,
     $systemPrompt,
     $finalSystemPromptTemplate,
+    $orm,
+    $em
 ): void {
     await($bot->api->sendChatAction(
         chatId: $update->message->chat->id,
@@ -67,16 +94,93 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
         content: $update->message->text,
     );
 
-    $response = $ant->message(
-        system: $systemPrompt,
-        messages: $states[$chatId],
-        tools: [InteractionTool::class],
-        toolChoice: ToolChoice::useTool(InteractionTool::class),
-    );
+    $retries = 0;
 
-    dump($response);
+    $hasText = false;
+    do {
+        try {
+            $prompt = $systemPrompt;
 
-    $messageSent = false;
+            if ($retries > 0) {
+                $prompt .= <<<TXT
+                    This is the {$retries} retry.
+                    please think very carefully and say something in the `Speech and Actions`.
+                    After fifth reply the game will be over...
+                    TXT;
+            }
+
+            $response = $ant->message(
+                system: $prompt,
+                messages: $states[$chatId],
+                tools: [InteractionTool::class],
+                toolChoice: ToolChoice::useTool(InteractionTool::class),
+            );
+        } catch (\Http\Client\Exception\HttpException $e) {
+            $text = '*Абдул почувствовал себя плохо и поспешно удалился. Попробуйте найти его позже*';
+
+            $states[$chatId]= [];
+
+            $em->persist(new Entity\Message(
+                text: $text,
+                chatId: $chatId,
+                createdAt: new DateTimeImmutable(),
+                fromUserId: $botInfo->id,
+                fromUsername: $botInfo->username,
+                isFinishMessage: true,
+            ))->run();
+
+            await($bot->api->sendMessage(
+                chatId: $update->message->chat->id,
+                text: $text,
+            ));
+
+            return;
+        }
+
+        foreach ($response->content as $content) {
+            if ($content instanceof TextContent || (
+                $content instanceof KnownToolUseContent
+                    && $content->input instanceof InteractionSchema
+                    && $content->input->speechAndActions !== null
+            )) {
+                $hasText = true;
+                break 2;
+            }
+        }
+
+        await(\React\Promise\Timer\sleep(0.5 * $retries));
+    } while (++$retries <= 5);
+
+    if (!$hasText) {
+        $text = '*Абдул долго думал, но так и не придумал, что вам ответить*';
+
+        $states[$chatId][] = new Message(
+            role: Role::ASSISTANT,
+            content: $text,
+        );
+
+        $em->persist(new Entity\Message(
+            text: $text,
+            chatId: $chatId,
+            createdAt: new DateTimeImmutable(),
+            fromUserId: $botInfo->id,
+            fromUsername: $botInfo->username,
+        ))->run();
+
+        await($bot->api->sendMessage(
+            chatId: $update->message->chat->id,
+            text: $text,
+        ));
+        return;
+    }
+
+    $em->persist(new Entity\Message(
+        text: $update->message->text,
+        chatId: $chatId,
+        createdAt: new DateTimeImmutable(),
+        fromUserId: $update->message->from->id,
+        fromUsername: $update->message->from->username,
+    ))->run();
 
     foreach ($response->content as $content) {
         $text        = null;
@@ -141,6 +245,15 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
 
             $states[$chatId] = [];
 
+            $em->persist(new Entity\Message(
+                text: $text,
+                chatId: $chatId,
+                createdAt: new DateTimeImmutable(),
+                fromUserId: $botInfo->id,
+                fromUsername: $botInfo->username,
+                isFinishMessage: true,
+            ))->run();
+
             await($bot->api->sendMessage(
                 chatId: $update->message->chat->id,
                 text: <<<'TXT'
@@ -159,17 +272,19 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
                 content: $messageText,
             );
 
+            $em->persist(new Entity\Message(
+                text: $messageText,
+                chatId: $chatId,
+                createdAt: new DateTimeImmutable(),
+                fromUserId: $botInfo->id,
+                fromUsername: $botInfo->username,
+            ))->run();
+
             await($bot->api->sendMessage(
                 chatId: $update->message->chat->id,
                 text: $text,
             ));
-
-            $messageSent = true;
         }
-    }
-
-    if (!$messageSent) {
-        $gameLoopHandler($update, $bot);
     }
 };
 
