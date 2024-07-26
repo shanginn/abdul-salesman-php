@@ -17,6 +17,7 @@ class Personality
         public float $activityLevel,
         public float $assertiveness,
         public float $cheerfulness,
+        public float $greed,
         public float $libido
     ) {}
 
@@ -33,7 +34,8 @@ class Personality
             activityLevel={$this->activityLevel},
             assertiveness={$this->assertiveness},
             cheerfulness={$this->cheerfulness},
-            libido={$this->libido}
+            greed={$this->greed},
+            libido={$this->libido},
             EOD;
     }
 }

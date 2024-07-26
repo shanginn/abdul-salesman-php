@@ -20,6 +20,7 @@ class Person
     public function toHumanReadable(): string
     {
         $gender = $this->isMale ? 'guy' : 'girl';
+
         return <<<EOD
             My name is {$this->name}, I am {$this->age} years old. I am a {$gender}
             My personality: {$this->personality->toHumanReadable()}
