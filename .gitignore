@@ -1,2 +1,4 @@
 vendor
 .env
+.php-cs-fixer.cache
+src/config.php

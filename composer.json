@@ -50,5 +50,11 @@
     "allow-plugins": {
       "php-http/discovery": true
     }
+  },
+  "scripts": {
+    "fix": [
+      "Composer\\Config::disableProcessTimeout",
+      "PHP_CS_FIXER_IGNORE_ENV=1 ./tools/vendor/bin/php-cs-fixer fix src --diff -vvv --config=.php-cs-fixer.php"
+    ]
   }
 }
