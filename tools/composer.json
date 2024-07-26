@@ -1,5 +1,6 @@
 {
     "require": {
-        "psy/psysh": "@stable"
+        "psy/psysh": "@stable",
+        "friendsofphp/php-cs-fixer": "^3.60"
     }
 }
