@@ -22,6 +22,8 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 
+use Throwable;
+
 final readonly class Anthropic
 {
     public SerializerInterface $serializer;
@@ -30,9 +32,8 @@ final readonly class Anthropic
     public function __construct(
         private AnthropicClientInterface $client,
         private string $model = 'claude-3-5-sonnet-20240620',
-    )
-    {
-        $encoders = [new JsonEncoder()];
+    ) {
+        $encoders    = [new JsonEncoder()];
         $normalizers = [
             new BackedEnumNormalizer(),
             new ToolNormalizer(),
@@ -43,24 +44,26 @@ final readonly class Anthropic
             ),
         ];
 
-        $this->serializer = new Serializer($normalizers, $encoders);
+        $this->serializer   = new Serializer($normalizers, $encoders);
         $this->deserializer = new SerdeCommon();
     }
 
     /**
      * Sends a message to the model and retrieves the response.
      *
-     * @param array<Message> $messages Array of input messages. Each message should be an associative array
-     *                        with 'role' and 'content' keys.
-     * @param int $maxTokens The maximum number of tokens to generate before stopping.
-     * @param array $stopSequences Optional array of custom text sequences that will cause the model
-     *                             to stop generating.
-     * @param float $temperature Amount of randomness injected into the response. Range: 0.0 to 1.0.
-     * @param bool $stream Whether to incrementally stream the response using server-sent events.
-     * @param ToolChoice|null $toolChoice Specifies how the model should use the provided tools.
-     * @param array<class-string<ToolInterface>>|null $tools Definitions and descriptions of tools that the model may use during the response generation.
+     * @param array<Message>                          $messages      Array of input messages. Each message should be an associative array
+     *                                                               with 'role' and 'content' keys.
+     * @param int                                     $maxTokens     the maximum number of tokens to generate before stopping
+     * @param array                                   $stopSequences optional array of custom text sequences that will cause the model
+     *                                                               to stop generating
+     * @param float                                   $temperature   Amount of randomness injected into the response. Range: 0.0 to 1.0.
+     * @param bool                                    $stream        whether to incrementally stream the response using server-sent events
+     * @param ToolChoice|null                         $toolChoice    specifies how the model should use the provided tools
+     * @param array<class-string<ToolInterface>>|null $tools         definitions and descriptions of tools that the model may use during the response generation
+     * @param ?string                                 $system
+     * @param ?array                                  $metadata
      *
-     * @return MessageResponse The model's response.
+     * @return MessageResponse the model's response
      */
     public function message(
         array $messages,
@@ -86,7 +89,7 @@ final readonly class Anthropic
             tools: $tools,
         ), 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]);
 
-        $responseJson = $this->client->sendRequest( 'messages', $body);
+        $responseJson = $this->client->sendRequest('messages', $body);
 
         $response = $this->deserializer->deserialize($responseJson, 'json', MessageResponse::class);
 
@@ -100,7 +103,7 @@ final readonly class Anthropic
                                 from: 'array',
                                 to: $tool::getSchemaClass(),
                             );
-                        } catch (\Throwable $e) {
+                        } catch (Throwable $e) {
                             break;
                         }
 

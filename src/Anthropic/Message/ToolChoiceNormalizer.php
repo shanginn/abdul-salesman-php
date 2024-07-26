@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Shanginn\AbdulSalesman\Anthropic\Message;
 
 use Shanginn\AbdulSalesman\Anthropic\Tool\ToolInterface;
-use Spiral\JsonSchemaGenerator\Generator;
-use Spiral\JsonSchemaGenerator\GeneratorInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ToolChoiceNormalizer implements NormalizerInterface

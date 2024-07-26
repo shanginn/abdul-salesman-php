@@ -12,16 +12,16 @@ use Shanginn\AbdulSalesman\Anthropic\Tool\ToolInterface;
 final class MessageRequest
 {
     /**
-     * @param string $model The model that will complete your prompt. Refer to the API's model documentation for additional details and options.
-     * @param array<Message> $messages Array of input messages for conversational context. Each message is an associative array with 'role' and 'content'.
-     * @param int $maxTokens The maximum number of tokens to generate before stopping. This may not be reached if the model completes its response earlier.
-     * @param array|null $metadata Optional metadata about the request.
-     * @param array|null $stopSequences Custom text sequences that will trigger a stop in generation.
-     * @param bool|null $stream Whether to stream the response incrementally.
-     * @param string|null $system System prompt for specific instructions to the model.
-     * @param float|null $temperature Controls the randomness of the response. A lower value makes the response more deterministic.
-     * @param ToolChoice|null $toolChoice Specifies how the model should use the provided tools.
-     * @param array<ToolInterface>|null $tools Definitions and descriptions of tools that the model may use during the response generation.
+     * @param string                    $model         The model that will complete your prompt. Refer to the API's model documentation for additional details and options.
+     * @param array<Message>            $messages      Array of input messages for conversational context. Each message is an associative array with 'role' and 'content'.
+     * @param int                       $maxTokens     The maximum number of tokens to generate before stopping. This may not be reached if the model completes its response earlier.
+     * @param array|null                $metadata      optional metadata about the request
+     * @param array|null                $stopSequences custom text sequences that will trigger a stop in generation
+     * @param bool|null                 $stream        whether to stream the response incrementally
+     * @param string|null               $system        system prompt for specific instructions to the model
+     * @param float|null                $temperature   Controls the randomness of the response. A lower value makes the response more deterministic.
+     * @param ToolChoice|null           $toolChoice    specifies how the model should use the provided tools
+     * @param array<ToolInterface>|null $tools         definitions and descriptions of tools that the model may use during the response generation
      */
     public function __construct(
         public string $model,

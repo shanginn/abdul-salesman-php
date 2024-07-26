@@ -22,12 +22,12 @@ class ToolNormalizer implements NormalizerInterface
         assert(is_a($object, ToolInterface::class, true));
 
         return [
-            'name' => $object::getName(),
-            'description' => $object::getDescription(),
+            'name'         => $object::getName(),
+            'description'  => $object::getDescription(),
             'input_schema' => [
-                "type" => "object",
-                ...$this->jsonSchemaGenerator->generate($object::getSchemaClass())->jsonSerialize()
-            ]
+                'type' => 'object',
+                ...$this->jsonSchemaGenerator->generate($object::getSchemaClass())->jsonSerialize(),
+            ],
         ];
     }
 

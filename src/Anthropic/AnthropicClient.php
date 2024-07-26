@@ -7,10 +7,9 @@ namespace Shanginn\AbdulSalesman\Anthropic;
 use Http\Adapter\React\Client;
 use Http\Client\Exception\HttpException;
 use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\Psr18ClientDiscovery;
+use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
 final readonly class AnthropicClient implements AnthropicClientInterface
@@ -23,20 +22,20 @@ final readonly class AnthropicClient implements AnthropicClientInterface
     public function __construct(
         private string $apiKey,
         private string $apiUrl = 'https://api.anthropic.com/v1',
-    )
-    {
-        $this->httpClient = new Client();
+    ) {
+        $this->httpClient     = new Client();
         $this->requestFactory = Psr17FactoryDiscovery::findRequestFactory();
-        $this->streamFactory = Psr17FactoryDiscovery::findStreamFactory();
+        $this->streamFactory  = Psr17FactoryDiscovery::findStreamFactory();
     }
 
     /**
      * @param string $method
      * @param string $json
-     * @return string
      *
      * @throws HttpException
-     * @throws \Psr\Http\Client\ClientExceptionInterface
+     * @throws ClientExceptionInterface
+     *
+     * @return string
      */
     public function sendRequest(string $method, string $json): string
     {

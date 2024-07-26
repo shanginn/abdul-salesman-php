@@ -10,9 +10,9 @@ use Shanginn\AbdulSalesman\Character\InteractionTool;
 final class KnownToolUseContent implements ResponseMessageContentInterface
 {
     /**
-     * @param string $id Identifier for the specific tool use instance.
-     * @param ToolSchemaInterface $input The input data provided to the tool.
-     * @param class-string<InteractionTool> $tool The name of the tool used.
+     * @param string                        $id    identifier for the specific tool use instance
+     * @param ToolSchemaInterface           $input the input data provided to the tool
+     * @param class-string<InteractionTool> $tool  the name of the tool used
      */
     public function __construct(
         public string $id,
