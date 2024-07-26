@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7b481879b0fb4b48ce0dfa07c4f3ef9",
+    "content-hash": "ec650a8f410c6ea87b186b00e56d994c",
     "packages": [
         {
             "name": "composer/semver",
@@ -3309,11 +3309,17 @@
         },
         {
             "name": "shanginn/telegram-bot-api-framework",
-            "version": "0.19.0",
-            "dist": {
-                "type": "path",
-                "url": "/Users/shanginn/Projects/telegram-bot-api/framework",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shanginn/telegram-bot-api-php-framework.git",
                 "reference": "f0be46f8ce986f7af0b02c1888838ed31b705947"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shanginn/telegram-bot-api-php-framework/zipball/f0be46f8ce986f7af0b02c1888838ed31b705947",
+                "reference": "f0be46f8ce986f7af0b02c1888838ed31b705947",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.3",
@@ -3335,22 +3341,14 @@
                 "symfony/var-dumper": "^6.3",
                 "vlucas/phpdotenv": "^5.5"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Shanginn\\TelegramBotApiFramework\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Shanginn\\TelegramBotApiFramework\\Tests\\": "tests"
-                }
-            },
-            "scripts": {
-                "fix": [
-                    "PHP_CS_FIXER_IGNORE_ENV=1 ./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix -vvv --config=.php-cs-fixer.php --allow-risky=yes"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3361,10 +3359,11 @@
                 }
             ],
             "description": "Telegram bot API framework",
-            "transport-options": {
-                "symlink": true,
-                "relative": false
-            }
+            "support": {
+                "issues": "https://github.com/shanginn/telegram-bot-api-php-framework/issues",
+                "source": "https://github.com/shanginn/telegram-bot-api-php-framework/tree/master"
+            },
+            "time": "2024-07-25T15:30:13+00:00"
         },
         {
             "name": "spiral/attributes",
@@ -6298,7 +6297,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "shanginn/telegram-bot-api-framework": 20,
         "symfony/http-client": 20,
         "http-interop/http-factory-guzzle": 20,
         "php-http/react-adapter": 20,
@@ -6310,6 +6308,7 @@
         "cycle/orm": 20,
         "cycle/annotated": 20,
         "cycle/migrations": 20,
+        "cycle/schema-migrations-generator": 20,
         "psy/psysh": 0
     },
     "prefer-stable": false,
