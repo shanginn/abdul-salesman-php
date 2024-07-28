@@ -3,6 +3,8 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Cycle\ORM\EntityManager;
+use Http\Client\Exception\HttpException;
+
 use function React\Async\await;
 
 use Shanginn\AbdulSalesman\Anthropic\Anthropic;
@@ -14,11 +16,12 @@ use Shanginn\AbdulSalesman\Anthropic\Message\TextContent;
 use Shanginn\AbdulSalesman\Anthropic\Message\ToolChoice;
 use Shanginn\AbdulSalesman\Character\InteractionSchema;
 use Shanginn\AbdulSalesman\Character\InteractionTool;
-use Shanginn\AbdulSalesman\Entity;
 use Shanginn\AbdulSalesman\EchoLogger;
+use Shanginn\AbdulSalesman\Entity;
 use Shanginn\AbdulSalesman\OneMessageAtOneTimeMiddleware;
-use Shanginn\TelegramBotApiBindings\Types\Update;
+use Shanginn\AbdulSalesman\StartCommandHandler;
 
+use Shanginn\TelegramBotApiBindings\Types\Update;
 use Shanginn\TelegramBotApiFramework\TelegramBot;
 
 Dotenv\Dotenv::createImmutable(__DIR__)->load();
@@ -36,13 +39,13 @@ $ant = new Anthropic(
 );
 
 [
-    'abdul' => $abdul,
-    'systemPrompt' => $systemPrompt,
+    'abdul'                     => $abdul,
+    'systemPrompt'              => $systemPrompt,
     'finalSystemPromptTemplate' => $finalSystemPromptTemplate,
 ] = require __DIR__ . '/../config/config.php';
 
 $orm = require __DIR__ . '/../config/orm.php';
-$em = new EntityManager($orm);
+$em  = new EntityManager($orm);
 
 /** @var Entity\Message[] $messages */
 $messages = $orm->getRepository(Entity\Message::class)->findAll();
@@ -76,7 +79,6 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
     $abdul,
     $systemPrompt,
     $finalSystemPromptTemplate,
-    $orm,
     $em
 ): void {
     await($bot->api->sendChatAction(
@@ -115,10 +117,10 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
                 tools: [InteractionTool::class],
                 toolChoice: ToolChoice::useTool(InteractionTool::class),
             );
-        } catch (\Http\Client\Exception\HttpException $e) {
+        } catch (HttpException $e) {
             $text = '*Абдул почувствовал себя плохо и поспешно удалился. Попробуйте найти его позже*';
 
-            $states[$chatId]= [];
+            $states[$chatId] = [];
 
             $em->persist(new Entity\Message(
                 text: $text,
@@ -144,6 +146,7 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
                     && $content->input->speechAndActions !== null
             )) {
                 $hasText = true;
+
                 break 2;
             }
         }
@@ -171,6 +174,7 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
             chatId: $update->message->chat->id,
             text: $text,
         ));
+
         return;
     }
 
@@ -289,8 +293,11 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
 };
 
 $bot->addHandler($gameLoopHandler)
-    ->supports(fn (Update $update) => isset($update->message->text))
+    ->supports(fn (Update $update) => isset($update->message->text) && $update->message->entities === null)
     ->middleware(new OneMessageAtOneTimeMiddleware())
 ;
+
+$bot->addHandler(new StartCommandHandler())
+    ->supports(StartCommandHandler::supports(...));
 
 $bot->run();
