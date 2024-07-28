@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Cycle\ORM\EntityManager;
+use Cycle\ORM\ORMInterface;
 use Http\Client\Exception\HttpException;
 
 use function React\Async\await;
@@ -44,6 +45,7 @@ $ant = new Anthropic(
     'finalSystemPromptTemplate' => $finalSystemPromptTemplate,
 ] = require __DIR__ . '/../config/config.php';
 
+/** @var ORMInterface $orm */
 $orm = require __DIR__ . '/../config/orm.php';
 $em  = new EntityManager($orm);
 
@@ -325,5 +327,39 @@ $bot->addHandler($gameLoopHandler)
 
 $bot->addHandler(new StartCommandHandler())
     ->supports(StartCommandHandler::supports(...));
+
+$pressedCtrlC     = false;
+$gracefulShutdown = function (int $signal) use ($bot, &$pressedCtrlC, $em): void {
+    if ($pressedCtrlC) {
+        echo "Shutting down now...\n";
+        exit(0);
+    }
+
+    $keysCombination = $signal === SIGINT ? 'Ctrl+C' : 'Ctrl+Break';
+
+    echo "\n{$keysCombination} pressed. Gracefully shutting down...\nPress it again to force shutdown.\n\n";
+
+    $pressedCtrlC = true;
+
+    try {
+        $em->run();
+    } catch (Throwable) {
+    }
+
+    try {
+        $em->clean();
+    } catch (Throwable) {
+    }
+
+    try {
+        $bot->stop();
+    } catch (Throwable) {
+    }
+
+    exit(0);
+};
+
+pcntl_signal(SIGTERM, $gracefulShutdown);
+pcntl_signal(SIGINT, $gracefulShutdown);
 
 $bot->run();

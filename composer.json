@@ -27,7 +27,8 @@
     "cycle/orm": "2.x-dev",
     "cycle/annotated": "4.x-dev",
     "cycle/migrations": "4.x-dev",
-    "cycle/schema-migrations-generator": "3.x-dev"
+    "cycle/schema-migrations-generator": "3.x-dev",
+    "ext-pcntl": "*"
   },
   "require-dev": {
     "php-http/mock-client": "^1.0",

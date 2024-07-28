@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec650a8f410c6ea87b186b00e56d994c",
+    "content-hash": "4c0ebd6a1e566007ce48cdac1efa2ff9",
     "packages": [
         {
             "name": "composer/semver",
@@ -3313,12 +3313,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/shanginn/telegram-bot-api-php-framework.git",
-                "reference": "f0be46f8ce986f7af0b02c1888838ed31b705947"
+                "reference": "2882c9182438265d832982a26669afac476259d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shanginn/telegram-bot-api-php-framework/zipball/f0be46f8ce986f7af0b02c1888838ed31b705947",
-                "reference": "f0be46f8ce986f7af0b02c1888838ed31b705947",
+                "url": "https://api.github.com/repos/shanginn/telegram-bot-api-php-framework/zipball/2882c9182438265d832982a26669afac476259d2",
+                "reference": "2882c9182438265d832982a26669afac476259d2",
                 "shasum": ""
             },
             "require": {
@@ -3363,7 +3363,7 @@
                 "issues": "https://github.com/shanginn/telegram-bot-api-php-framework/issues",
                 "source": "https://github.com/shanginn/telegram-bot-api-php-framework/tree/master"
             },
-            "time": "2024-07-25T15:30:13+00:00"
+            "time": "2024-07-28T09:08:16+00:00"
         },
         {
             "name": "spiral/attributes",
@@ -6314,7 +6314,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.3"
+        "php": ">=8.3",
+        "ext-pcntl": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
