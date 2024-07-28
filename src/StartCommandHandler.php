@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Shanginn\AbdulSalesman;
 
-use Shanginn\TelegramBotApiBindings\Types\LinkPreviewOptions;
 use function React\Async\await;
 
 use React\Promise\Timer;
+
+use Shanginn\TelegramBotApiBindings\Types\LinkPreviewOptions;
 use Shanginn\TelegramBotApiBindings\Types\Update;
 use Shanginn\TelegramBotApiFramework\Handler\AbstractStartCommandHandler;
 use Shanginn\TelegramBotApiFramework\TelegramBot;
@@ -84,7 +85,7 @@ class StartCommandHandler extends AbstractStartCommandHandler
 
         await($bot->api->sendMessage(
             chatId: $update->message->chat->id,
-            text: <<<HTML
+            text: <<<'HTML'
                 <b>Напишите что-нибудь, чтобы начать диалог с Абдулом</b>
                 HTML,
             parseMode: 'html',

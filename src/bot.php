@@ -92,6 +92,30 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
         $states[$chatId] = [];
     }
 
+    if ($update->message->text === '/stop') {
+        $states[$chatId] = [];
+
+        $em->persist(new Entity\Message(
+            text: $update->message->text,
+            chatId: $chatId,
+            createdAt: new DateTimeImmutable(),
+            fromUserId: $update->message->from->id,
+            fromUsername: $update->message->from->username,
+            isFinishMessage: true,
+        ))->run();
+
+        await($bot->api->sendMessage(
+            chatId: $update->message->chat->id,
+            text: <<<'TXT'
+                <b>Игра окончена!
+                Спасибо за игру. Начните новую, написав что-нибудь.</b>
+                TXT,
+            parseMode: 'HTML',
+        ));
+
+        return;
+    }
+
     $states[$chatId][] = new Message(
         content: $update->message->text,
     );
@@ -293,7 +317,9 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
 };
 
 $bot->addHandler($gameLoopHandler)
-    ->supports(fn (Update $update) => isset($update->message->text) && $update->message->entities === null)
+    ->supports(fn (Update $update) => isset($update->message->text) && (
+        $update->message->entities === null || $update->message->text === '/stop'
+    ))
     ->middleware(new OneMessageAtOneTimeMiddleware())
 ;
 
