@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Shanginn\AbdulSalesman;
 
+use Shanginn\TelegramBotApiBindings\Types\LinkPreviewOptions;
 use function React\Async\await;
 
 use React\Promise\Timer;
@@ -73,15 +74,23 @@ class StartCommandHandler extends AbstractStartCommandHandler
                 Из приоткрытой двери доносится запах богатых пряностей и слабый аромат сандала.
                 Внутри мягкий свет фонарей освещает роскошные ковры, украшающие стены и пол, намекая на сокровища,
                 которые хранятся внутри. Вы чуть стоите на пороге, и уверенно шагаете в мир роскоши и историй...
-                TXT
+                
+                <i>Изображения созданы с помощью нейросети <a href="https://t.me/genera4_bot?start=abdul">генерач</a></i>
+                TXT,
+            parseMode: 'html',
         ));
 
         await(Timer\sleep(1));
 
         await($bot->api->sendMessage(
             chatId: $update->message->chat->id,
-            text: '<b>Напишите что-нибудь, чтобы начать диалог с Абдулом</b>',
-            parseMode: 'html'
+            text: <<<HTML
+                <b>Напишите что-нибудь, чтобы начать диалог с Абдулом</b>
+                HTML,
+            parseMode: 'html',
+            linkPreviewOptions: new LinkPreviewOptions(
+                isDisabled: true
+            )
         ));
     }
 }
