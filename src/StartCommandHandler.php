@@ -24,7 +24,7 @@ class StartCommandHandler extends AbstractStartCommandHandler
 
         await($bot->api->sendPhoto(
             chatId: $update->message->chat->id,
-            photo: 'AgACAgIAAxkBAAJQJGal0Sp5g4OdtLgkEKN0gt_1mTbeAAJp3zEb8AwwSZ5MsaQLI8KLAQADAgADeQADNQQ',
+            photo: 'AgACAgIAAxkBAAMLZqYNxKugWcjGAnkGksePctoZC4UAAmnfMRvwDDBJAAGPiCBOuAf3AQADAgADeQADNQQ',
             caption: <<<'TXT'
                 Вы оказываетесь в солнечном Каире, на шумных и оживлённых улицах рынка.
                 Золотистые лучи солнца освещают яркие торговые ряды, где продавцы предлагают экзотические фрукты,
@@ -44,7 +44,7 @@ class StartCommandHandler extends AbstractStartCommandHandler
 
         await($bot->api->sendPhoto(
             chatId: $update->message->chat->id,
-            photo: 'AgACAgIAAxkBAAJQJWal0TIprEJbXdsCW6eM89vBMcqYAAL93TEblsUxSXIbICFRyZf4AQADAgADeQADNQQ',
+            photo: 'AgACAgIAAxkBAAMMZqYN6ZE0mzKQ8_N_MYVXFU_dC-gAAv3dMRuWxTFJnx4do7AU-z0BAAMCAAN5AAM1BA',
             caption: <<<'TXT'
                 Продвигаясь через многолюдные улицы, Вы оказываетесь на узком извилистом переулке,
                 отдалённом от главных дорог Каира. Стены домов украшены сложными узорами и старыми фресками,
@@ -66,7 +66,7 @@ class StartCommandHandler extends AbstractStartCommandHandler
 
         await($bot->api->sendPhoto(
             chatId: $update->message->chat->id,
-            photo: 'AgACAgIAAxkBAAJQJmal0Th2mWJuaHKa8u6-nRHa8LzNAAL-3TEblsUxSdGX9oVJ0Z4MAQADAgADeQADNQQ',
+            photo: 'AgACAgIAAxkBAAMNZqYN_c3Hi6JL9_gx4v8zR1LTGA4AAv7dMRuWxTFJZE7sMgIguKYBAAMCAAN5AAM1BA',
             caption: <<<'TXT'
                 Наконец, Вы подходите к входу в магазин ковров Абдула, спрятанный в лабиринте улиц Каира.
                 Деревянная дверь, чуть приоткрытая, украшена сложными геометрическими узорами и бронзовыми элементами.
