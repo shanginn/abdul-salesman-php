@@ -144,6 +144,18 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
                 toolChoice: ToolChoice::useTool(InteractionTool::class),
             );
         } catch (HttpException $e) {
+            // if overloaded_error in body:
+            if (str_contains($e->getResponse()->getBody()->getContents(), 'overloaded_error')) {
+                $text = '*Абдул перегружен и пока не может ответить. Попробуйте подойти к нему позже*';
+
+                await($bot->api->sendMessage(
+                    chatId: $update->message->chat->id,
+                    text: $text,
+                ));
+
+                return;
+            }
+
             $text = '*Абдул почувствовал себя плохо и поспешно удалился. Попробуйте найти его позже*';
 
             $states[$chatId] = [];
@@ -160,6 +172,12 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
             await($bot->api->sendMessage(
                 chatId: $update->message->chat->id,
                 text: $text,
+            ));
+
+            await($bot->api->sendMessage(
+                chatId: $update->message->chat->id,
+                text: '<b>К сожалению, что-то пошло не так и на этом игра закончилась. Начните новую игру, написав что-нибудь.</b>',
+                parseMode: 'HTML',
             ));
 
             return;
