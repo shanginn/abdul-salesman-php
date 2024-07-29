@@ -146,9 +146,7 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
         } catch (HttpException $e) {
             /** @var React\Http\Io\BufferedBody $body */
             $body = $e->getResponse()->getBody();
-            dump($body->getContents());
-            dump((string) $body);
-            if (str_contains($body->getContents(), 'overloaded_error')) {
+            if (str_contains((string) $body, 'overloaded_error')) {
                 $text = '*Абдул перегружен и пока не может ответить. Попробуйте подойти к нему позже*';
 
                 await($bot->api->sendMessage(
