@@ -126,6 +126,11 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
 
     $hasText = false;
     do {
+        await($bot->api->sendChatAction(
+            chatId: $update->message->chat->id,
+            action: 'typing',
+        ));
+
         try {
             $prompt = $systemPrompt;
 
@@ -147,6 +152,7 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
             /** @var React\Http\Io\BufferedBody $body */
             $body = $e->getResponse()->getBody();
             if (str_contains((string) $body, 'overloaded_error')) {
+                continue;
                 $text = '*Абдул перегружен и пока не может ответить. Попробуйте подойти к нему позже*';
 
                 await($bot->api->sendMessage(
@@ -197,7 +203,7 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
         }
 
         await(\React\Promise\Timer\sleep(0.5 * $retries));
-    } while (++$retries <= 5);
+    } while (++$retries <= 10);
 
     if (!$hasText) {
         $text = '*Абдул долго думал, но так и не придумал, что вам ответить*';
