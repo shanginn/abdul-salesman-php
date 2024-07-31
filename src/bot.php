@@ -208,14 +208,6 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
             content: $text,
         );
 
-        $em->persist(new Entity\Message(
-            text: $text,
-            chatId: $chatId,
-            createdAt: new DateTimeImmutable(),
-            fromUserId: $botInfo->id,
-            fromUsername: $botInfo->username,
-        ))->run();
-
         await($bot->api->sendMessage(
             chatId: $update->message->chat->id,
             text: $text,
