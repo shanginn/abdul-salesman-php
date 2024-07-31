@@ -8,6 +8,8 @@ use Http\Client\Exception\HttpException;
 
 use function React\Async\await;
 
+use React\Http\Io\BufferedBody;
+
 use Shanginn\AbdulSalesman\Anthropic\Anthropic;
 use Shanginn\AbdulSalesman\Anthropic\AnthropicClient;
 use Shanginn\AbdulSalesman\Anthropic\Message\KnownToolUseContent;
@@ -22,6 +24,7 @@ use Shanginn\AbdulSalesman\Entity;
 use Shanginn\AbdulSalesman\OneMessageAtOneTimeMiddleware;
 use Shanginn\AbdulSalesman\StartCommandHandler;
 
+use Shanginn\TelegramBotApiBindings\Types\MessageEntity;
 use Shanginn\TelegramBotApiBindings\Types\Update;
 use Shanginn\TelegramBotApiFramework\TelegramBot;
 
@@ -94,7 +97,7 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
         $states[$chatId] = [];
     }
 
-    if ($update->message->text === '/stop') {
+    if (trim($update->message->text) === '/stop') {
         $states[$chatId] = [];
 
         $em->persist(new Entity\Message(
@@ -149,7 +152,7 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
                 toolChoice: ToolChoice::useTool(InteractionTool::class),
             );
         } catch (HttpException $e) {
-            /** @var React\Http\Io\BufferedBody $body */
+            /** @var BufferedBody $body */
             $body = $e->getResponse()->getBody();
             if (str_contains((string) $body, 'overloaded_error')) {
                 continue;
@@ -337,7 +340,10 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
 
 $bot->addHandler($gameLoopHandler)
     ->supports(fn (Update $update) => isset($update->message->text) && (
-        $update->message->entities === null || $update->message->text === '/stop'
+        trim($update->message->text) === '/stop' || count(array_filter(
+            $update->message->entities,
+            fn (MessageEntity $entity) => $entity->type === 'bot_command'
+        )) === 0
     ))
     ->middleware(new OneMessageAtOneTimeMiddleware())
 ;
