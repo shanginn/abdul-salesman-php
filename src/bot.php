@@ -333,7 +333,7 @@ $gameLoopHandler = function (Update $update, TelegramBot $bot) use (
 $bot->addHandler($gameLoopHandler)
     ->supports(fn (Update $update) => isset($update->message->text) && (
         trim($update->message->text) === '/stop' || count(array_filter(
-            $update->message->entities,
+            $update->message->entities ?? [],
             fn (MessageEntity $entity) => $entity->type === 'bot_command'
         )) === 0
     ))
