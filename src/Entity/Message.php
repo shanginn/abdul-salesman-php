@@ -24,7 +24,7 @@ class Message
         #[Column(type: 'text')]
         public string $fromUserId,
         #[Column(type: 'text', nullable: true)]
-        public string $fromUsername,
+        public ?string $fromUsername,
         #[Column(type: 'boolean', typecast: 'bool')]
         public bool $isFinishMessage = false
     ) {}
