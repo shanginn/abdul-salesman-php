@@ -23,6 +23,11 @@ composer install
 
 Copy the `.env.dist` file to `.env` and set the following variables:
 
+```bash
+cd src
+cp .env.dist .env
+```
+
 ```dotenv
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 ANTHROPIC_API_KEY=your_anthropic_api_key

@@ -23,6 +23,11 @@ composer install
 
 Скопируйте файл `.env.dist` в `.env` и установите следующие переменные:
 
+```bash
+cd src
+cp .env.dist .env
+```
+
 ```dotenv
 TELEGRAM_BOT_TOKEN=ваш_токен_бота_telegram
 ANTHROPIC_API_KEY=ваш_ключ_api_anthropic
