@@ -30,7 +30,7 @@ $abdul = new Person(
         surprise: 0.0,
         contempt: 0.0,
         neutral: 0.0,
-        horny: 0.0,
+        horny: 1.0,
     ),
     characterDescription: 'Abdul is a friendly and engaging carpet salesman',
     looksDescription: 'Abdul is a man in his mid-40s with a warm and welcoming demeanor',
